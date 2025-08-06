@@ -1,0 +1,134 @@
+/* Conversations Page Styles */
+
+/* Message bubbles animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Conversation list item hover effect */
+.conversation-item {
+  transition: all 0.3s ease;
+}
+
+.conversation-item:hover {
+  background-color: #f5f5f5;
+  transform: translateX(4px);
+}
+
+/* Message bubble styling */
+.message-bubble {
+  animation: fadeIn 0.3s ease;
+}
+
+.message-bubble.user {
+  background-color: #e6f7ff;
+}
+
+.message-bubble.ai {
+  background-color: #f7f7f7;
+}
+
+/* Table styling overrides for staff data */
+.staff-table th {
+  background-color: #f0f5ff !important;
+  font-weight: 500;
+}
+
+.staff-table .ant-table-cell {
+  padding: 8px 12px !important;
+}
+
+.staff-table .online-status {
+  color: #52c41a;
+}
+
+.staff-table .offline-status {
+  color: #faad14;
+}
+
+/* Search input styling */
+.search-input {
+  transition: all 0.3s;
+}
+
+.search-input:hover,
+.search-input:focus {
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Message input styling */
+.message-input {
+  border-radius: 18px !important;
+  transition: all 0.3s ease;
+}
+
+.message-input:focus {
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+  border-color: #1890ff;
+}
+
+/* Action buttons */
+.action-button {
+  transition: all 0.3s ease;
+}
+
+.action-button:hover {
+  transform: scale(1.1);
+  color: #1890ff;
+}
+
+/* Timestamp styling */
+.message-timestamp {
+  opacity: 0.7;
+  font-size: 11px;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .conversation-sidebar {
+    width: 100% !important;
+    position: absolute;
+    z-index: 1000;
+  }
+  
+  .conversation-main {
+    margin-left: 0;
+  }
+}
+
+/* Empty state styling */
+.empty-state {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.empty-state:hover {
+  opacity: 1;
+}
