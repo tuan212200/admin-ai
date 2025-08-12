@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
-  Avatar, 
-  Button, 
-  Dropdown, 
-  Modal, 
+  Avatar,
+  Button,
+  Dropdown,
+  Modal,
   message,
   Badge,
   theme,
@@ -14,10 +14,10 @@ import {
   Input
 } from 'antd';
 import {
-  DashboardOutlined, 
-  UserOutlined, 
-  SettingOutlined, 
-  ShoppingCartOutlined, 
+  DashboardOutlined,
+  UserOutlined,
+  SettingOutlined,
+  ShoppingCartOutlined,
   FileOutlined,
   BellOutlined,
   LogoutOutlined,
@@ -39,7 +39,7 @@ const MainLayout = ({ children }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { token } = theme.useToken();
-  
+
   // Update time every minute
   useEffect(() => {
     const interval = setInterval(() => {
@@ -49,17 +49,8 @@ const MainLayout = ({ children }) => {
   }, []);
 
   const handleLogout = () => {
-    Modal.confirm({
-      title: 'Confirm Logout',
-      content: 'Are you sure you want to log out?',
-      onOk: () => {
-        logout();
-        message.success('Logged out successfully');
-        navigate('/login');
-      },
-      okText: 'Logout',
-      cancelText: 'Cancel',
-    });
+      console.log('logout');
+      logout();
   };
 
   const userMenuItems = {
@@ -137,7 +128,7 @@ const MainLayout = ({ children }) => {
       day: 'numeric'
     });
   };
-  
+
   // User profile component for the header
   const UserProfile = () => (
     <Dropdown menu={userMenuItems} placement="bottomRight">
@@ -204,7 +195,7 @@ const MainLayout = ({ children }) => {
           letterSpacing: '1px',
           display: 'flex',
           alignItems: 'center',
-          padding: '6px 10px',      
+          padding: '6px 10px',
         }}>
           <img
             src="/vite.svg"
@@ -235,7 +226,7 @@ const MainLayout = ({ children }) => {
       menuItemRender={(item, dom) => (
         <Link to={item.path}>{dom}</Link>
       )}
-      
+
       // Header styles
       headerHeight={70}
       headerTheme="dark"
@@ -245,12 +236,12 @@ const MainLayout = ({ children }) => {
         position: 'relative',
         overflow: 'hidden',
       }}
-      
+
       // The central content in header (search bar)
       headerContentRender={() => (
         <div style={{ display: 'flex', alignItems: 'center'}}>
-          <div style={{ 
-            background: 'rgba(255, 255, 255, 0.15)', 
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.15)',
             borderRadius: '24px',
             padding: '6px 16px',
             display: 'flex',
@@ -259,21 +250,21 @@ const MainLayout = ({ children }) => {
             border: '1px solid rgba(255, 255, 255, 0.1)',
           }}>
             <SearchOutlined style={{ color: 'rgba(255, 255, 255, 0.85)', marginRight: '8px' }} />
-            <Input 
-              placeholder="Tìm kiếm..." 
-              bordered={false} 
-              style={{ 
-                background: 'transparent', 
+            <Input
+              placeholder="Tìm kiếm..."
+              bordered={false}
+              style={{
+                background: 'transparent',
                 color: '#fff',
                 width: '200px',
-              }} 
-              
+              }}
+
             />
           </div>
           <div style={{ margin: '0 16px', display: 'flex', alignItems: 'center' }}>
             <Tooltip title="Current date">
-              <div style={{ 
-                color: 'rgba(255, 255, 255, 0.85)', 
+              <div style={{
+                color: 'rgba(255, 255, 255, 0.85)',
                 fontSize: '13px',
                 padding: '4px 12px',
               }}>
@@ -283,14 +274,14 @@ const MainLayout = ({ children }) => {
           </div>
         </div>
       )}
-      
+
       // The right side of the header with action buttons
       actionsRender={() => [
         <Tooltip key="help" title="Help">
-          <Button 
-            type="text" 
-            icon={<QuestionCircleOutlined style={{ color: '#fff' }} />} 
-            style={{ 
+          <Button
+            type="text"
+            icon={<QuestionCircleOutlined style={{ color: '#fff' }} />}
+            style={{
               background: 'rgba(255, 255, 255, 0.1)',
               borderRadius: '50%',
               width: '36px',
@@ -299,15 +290,15 @@ const MainLayout = ({ children }) => {
               alignItems: 'center',
               justifyContent: 'center',
               border: '1px solid rgba(255, 255, 255, 0.1)'
-            }} 
+            }}
           />
         </Tooltip>,
-        
+
         <Tooltip key="apps" title="Apps">
-          <Button 
-            type="text" 
-            icon={<AppstoreOutlined style={{ color: '#fff' }} />} 
-            style={{ 
+          <Button
+            type="text"
+            icon={<AppstoreOutlined style={{ color: '#fff' }} />}
+            style={{
               background: 'rgba(255, 255, 255, 0.1)',
               borderRadius: '50%',
               width: '36px',
@@ -316,15 +307,15 @@ const MainLayout = ({ children }) => {
               alignItems: 'center',
               justifyContent: 'center',
               border: '1px solid rgba(255, 255, 255, 0.1)'
-            }} 
+            }}
           />
         </Tooltip>,
-        
+
         <Tooltip key="language" title="Language">
-          <Button 
-            type="text" 
-            icon={<GlobalOutlined style={{ color: '#fff' }} />} 
-            style={{ 
+          <Button
+            type="text"
+            icon={<GlobalOutlined style={{ color: '#fff' }} />}
+            style={{
               background: 'rgba(255, 255, 255, 0.1)',
               borderRadius: '50%',
               width: '36px',
@@ -333,17 +324,17 @@ const MainLayout = ({ children }) => {
               alignItems: 'center',
               justifyContent: 'center',
               border: '1px solid rgba(255, 255, 255, 0.1)'
-            }} 
+            }}
           />
         </Tooltip>,
-        
+
         hasPermission(['admin']) && (
           <Tooltip key="admin" title="Admin access">
             <Badge dot color="#f5222d">
-              <Button 
-                type="text" 
-                icon={<LockOutlined style={{ color: '#fff' }} />} 
-                style={{ 
+              <Button
+                type="text"
+                icon={<LockOutlined style={{ color: '#fff' }} />}
+                style={{
                   background: 'rgba(255, 255, 255, 0.1)',
                   borderRadius: '50%',
                   width: '36px',
@@ -352,18 +343,18 @@ const MainLayout = ({ children }) => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   border: '1px solid rgba(255, 255, 255, 0.1)'
-                }} 
+                }}
               />
             </Badge>
           </Tooltip>
         ),
-        
+
         <Tooltip key="notifications" title="Notifications">
           <Badge count={5} size="small">
-            <Button 
-              type="text" 
-              icon={<BellOutlined style={{ color: '#fff' }} />} 
-              style={{ 
+            <Button
+              type="text"
+              icon={<BellOutlined style={{ color: '#fff' }} />}
+              style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 borderRadius: '50%',
                 width: '36px',
@@ -372,19 +363,19 @@ const MainLayout = ({ children }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
-              }} 
+              }}
             />
           </Badge>
         </Tooltip>,
-        
-        <Divider key="divider" type="vertical" style={{ 
-          height: '24px', 
-          borderColor: 'rgba(255, 255, 255, 0.15)' 
+
+        <Divider key="divider" type="vertical" style={{
+          height: '24px',
+          borderColor: 'rgba(255, 255, 255, 0.15)'
         }} />,
-        
+
         <UserProfile key="user" />
       ]}
-      
+
       contentStyle={{
         margin: '24px 16px',
         padding: 24,
@@ -396,7 +387,7 @@ const MainLayout = ({ children }) => {
       }}
     >
       {/* Add decorative elements to the header background */}
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: 0,
@@ -408,7 +399,7 @@ const MainLayout = ({ children }) => {
           zIndex: 0
         }}
       />
-      <div 
+      <div
         style={{
           position: 'absolute',
           top: 0,
@@ -420,11 +411,11 @@ const MainLayout = ({ children }) => {
           zIndex: 0
         }}
       />
-      
+
       {children}
-      <div style={{ 
-        textAlign: 'center', 
-        padding: '16px', 
+      <div style={{
+        textAlign: 'center',
+        padding: '16px',
         color: 'rgba(0,0,0,0.45)',
         fontSize: '13px',
         background: '#f0f2f5',
